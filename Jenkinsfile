@@ -6,6 +6,7 @@ pipeline {
         timeout(time:30, unit: 'MINUTES')
         disableConcurrentBuild()
         retry(1)
+        ansiColor('xterm')
     }
     environment {
         DEBUG = 'true'
