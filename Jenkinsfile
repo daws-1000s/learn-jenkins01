@@ -46,5 +46,30 @@ pipeline {
                 echo "Password: ${params.PASSWORD}"
             }
         }
+        stage ('Approval') {
+            input {
+                message "shouls we continue?"
+                ok "yes, we should."
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr jenkins', description: 'who should I say hello to?')
+                }
+            }
+            steps {
+                echo "Hello, ${PERSON}, nice to meet you."
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "This section runs always"
+            deleteDir()
+        }
+        success {
+            echo "This section runs when pipeline success"
+        }
+        failure {
+            echo "This section runs when pipeline failed"
+        }
     }
 }
