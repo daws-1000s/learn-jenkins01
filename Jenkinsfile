@@ -70,6 +70,7 @@ pipeline {
         }
         failure {
             echo "This section runs when pipeline failed"
+            echo "Thankyou"
         }
     }
 }
